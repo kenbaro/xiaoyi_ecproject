@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-YeeApplication<yee>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.yeeshop.yee.YeeApplication",
+            "projectName": "yee",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

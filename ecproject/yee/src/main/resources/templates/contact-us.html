@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: yee_head"></head>
+
+<body class="common-home res layout-1">
+    
+    <div id="wrapper" class="wrapper-fluid banners-effect-3">
+    
+
+    <!-- Header Container  -->
+    <header th:replace="/layout/header :: yee_header1"  id="header" class=" typeheader-1">
+        
+  
+    </header>
+    <!-- //Header Container  -->
+    
+   
+	<!-- Main Container  -->
+	<div class="main-container container">
+		<ul class="breadcrumb">
+			<li><a href="@{/home}"><i class="fa fa-home"></i></a></li>
+			<li><a href="@{/home}">Yee Shop</a></li>
+			<li><a href="">Contact us</a></li>			
+		</ul>
+		
+		<div class="row">
+			<div id="content" class="col-sm-12">
+				<div class="page-title">
+					<h2>Contact Us</h2>
+				</div>
+				
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4843009459532!2d106.76973361477208!3d10.850721392271174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752763f23816ab%3A0x282f711441b6916f!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTxrAgcGjhuqFtIEvhu7kgdGh14bqtdCBUcC4gSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1666379197100!5m2!1svi!2s" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2948.8442639328655!2d-71.10008329902021!3d42.34584359264178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e379f63dc43ccb%3A0xa15d5aa87d0f0c12!2s4+Yawkey+Way%2C+Boston%2C+MA+02215!5e0!3m2!1sen!2s!4v1475081210943" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+				<div class="info-contact clearfix">
+					<div class="col-lg-4 col-sm-4 col-xs-12 info-store">
+						<div class="row">
+							<div class="name-store">
+								<h3>Yee Shop</h3>
+							</div>
+							<address>
+								<div class="address clearfix form-group">
+									<div class="icon">
+										<i class="fa fa-home"></i>
+									</div>
+									<div class="text">Yee Shop, No1 Vo Van Ngan, HCM University of Technology and Education</div>
+								</div>
+								<div class="phone form-group">
+									<div class="icon">
+										<i class="fa fa-phone"></i>
+									</div>
+									<div class="text">Phone : 0123456789</div>
+								</div>
+								<div class="comment"> 
+									<p style="text-align:justify;">
+										YEE SHOP focuses on building different customer service with outstanding 
+										quality, in line with the customer-centered culture in all thoughts and 
+										actions of the company.
+	
+										With the main business of mobile phones, YEE SHOP cooperates with
+										many big brands like Apple, Samsung, Oppo, etc.
+									</p>            
+                                    
+								</div>
+							</address>
+						</div>
+					</div>
+					<div class="col-lg-8 col-sm-8 col-xs-12 contact-form">
+						<form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+							<fieldset>
+								<legend>Contact Form</legend>
+								<div class="form-group required">
+							<label class="col-sm-2 control-label" for="input-name">Your Name</label>
+							<div class="col-sm-10">
+								<input type="text" name="name" value="" id="input-name" class="form-control">
+								</div>
+							</div>  
+							<div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-email">E-Mail Address</label>
+								<div class="col-sm-10">
+									<input type="text" name="email" value="" id="input-email" class="form-control">
+									</div>
+								</div>
+								<div class="form-group required">
+									<label class="col-sm-2 control-label" for="input-enquiry">Enquiry</label>
+									<div class="col-sm-10">
+										<textarea name="enquiry" rows="10" id="input-enquiry" class="form-control"></textarea>
+									</div>
+								</div>
+							</fieldset>
+							<div class="buttons">
+								<div class="pull-right">
+									<button class="btn btn-default buttonGray" type="submit">
+										<span>Submit</span>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //Main Container -->
+   <!-- Footer Container -->
+   <footer th:replace="index :: yee_footer" class="footer-container typefooter-1"></footer>
+   <!-- //end Footer Container -->
+<!-- End Color Scheme
+============================================ -->
+
+
+
+<!-- Include Libs & Plugins
+============================================ -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{js/owl-carousel/owl.carousel.js}"></script>
+<script type="text/javascript" th:src="@{js/slick-slider/slick.js}"></script>
+<script type="text/javascript" th:src="@{js/themejs/libs.js}"></script>
+<script type="text/javascript" th:src="@{js/unveil/jquery.unveil.js}"></script>
+<script type="text/javascript" th:src="@{js/countdown/jquery.countdown.min.js}"></script>
+<script type="text/javascript" th:src="@{js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+<script type="text/javascript" th:src="@{js/datetimepicker/moment.js}"></script>
+<script type="text/javascript" th:src="@{js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{js/jquery-ui/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{js/modernizr/modernizr-2.6.2.min.js}"></script>
+<script type="text/javascript" th:src="@{js/minicolors/jquery.miniColors.min.js}"></script>
+
+<!-- Theme files
+============================================ -->
+
+<script type="text/javascript" th:src="@{js/themejs/application.js}"></script>
+
+<script type="text/javascript" th:src="@{js/themejs/homepage.js}"></script>
+
+<script type="text/javascript" th:src="@{js/themejs/toppanel.js}"></script>
+<script type="text/javascript" th:src="@{js/themejs/so_megamenu.js}"></script>
+<script type="text/javascript" th:src="@{js/themejs/addtocart.js}"></script> 
+
+</body>
+</html>

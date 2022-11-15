@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: yee_head"></head>
+
+<body class=" res layout-1">
+    
+    <div id="wrapper" class="wrapper-fluid banners-effect-5">
+    
+
+    <!-- Header Container  -->
+    <header th:replace="/layout/header :: yee_header1"  id="header" class=" typeheader-1">
+        
+        
+    </header>
+    <!-- //Header Container  -->
+    
+   	<!-- Main Container  -->
+	<div class="main-container container">
+		<ul class="breadcrumb">
+			<li><a href="#"><i class="fa fa-home"></i></a></li>
+			<li><a href="#">Checkout</a></li>
+			
+		</ul>
+		
+		<div class="row">
+			<!--Middle Part Start-->
+			<div id="content" class="col-sm-12">
+			  <h2 class="title">Checkout</h2>
+			  <div class="so-onepagecheckout row">
+				<form th:action="@{/check-out}" th:object="${order}" enctype="multipart/form-data" class="form-horizontal" method="post">
+				<div class="col-left col-sm-3">
+				  <div class="panel panel-default">
+					<div class="panel-heading">
+					  <h4 class="panel-title"><i class="fa fa-user"></i> Your Personal Details</h4>
+					</div>
+					  <div class="panel-body">
+							<fieldset id="account">
+							  <div class="form-group required">
+								<label for="input-payment-firstname" class="control-label">User Name</label>
+								<input type="text" th:value="${session.user.id}" class="form-control" id="input-payment-firstname" placeholder="User Name" value="" name="user.id" readonly>
+							  </div>
+							  <div class="form-group required">
+								<label for="input-payment-lastname" class="control-label">Order Date</label>
+								<input type="text" th:value="${#dates.format(#dates.createNow(), 'dd/MM/yyyy')}" class="form-control" id="input-payment-lastname" placeholder="10/11/2022" value="" name="orderDate" readonly>
+							  </div>
+							  <div class="form-group required">
+								<label for="input-payment-telephone" class="control-label">Telephone</label>
+								<input type="text" th:value="${session.user.telephone}" class="form-control" id="input-payment-telephone" placeholder="Telephone" value="" name="telephone">
+							  </div>
+							  <div class="form-group required">
+								<label for="input-payment-email" class="control-label" required>Address</label>
+								<input type="text"  class="form-control" id="input-payment-email" placeholder="Address" name="address">
+							  </div>
+							  <div class="form-group required">
+								<label for="input-payment-email" class="control-label">Total</label>
+								<input type="text" th:value="${#numbers.formatInteger(cartAmount,3,'POINT')}"  class="form-control" id="input-payment-email" placeholder="30.000.000" name="toTal" readonly>
+							  </div>
+							  <div class="form-group">
+								<label for="input-payment-fax" class="control-label">Note</label>
+								<input type="text" class="form-control" id="input-payment-fax" placeholder="Note..." name="description">
+							  </div>
+							</fieldset>
+						  </div>
+				  </div>
+				</div>
+				<div class="col-right col-sm-9">
+				  <div class="row">
+					<div class="col-sm-12">
+					  <div class="panel panel-default">
+						<div class="panel-heading">
+						  <h4 class="panel-title"><i class="fa fa-shopping-cart"></i> Shopping cart</h4>
+						</div>
+						  <div class="panel-body">
+							<div class="table-responsive">
+							  <table class="table table-bordered">
+								<thead>
+								  <tr>
+									<td class="text-center">Image</td>
+									<td class="text-left">Product Name</td>
+									<td class="text-left">Quantity</td>
+									<td class="text-right">Unit Price</td>
+									<td class="text-right">Sub-Price</td>
+									<td class="text-right">Sub-Total</td>
+								  </tr>
+								</thead>
+								<tbody>
+								  <tr th:each="item,state:${cartItems}">
+									<td class="text-center"><a th:href="@{/product-detail/pid={id}(id=${item.id})}"><img width="60px" th:src="@{${'/image/catalog/products/'+item.image}}" alt="Xitefun" title="Xitefun" class="img-thumbnail"></a></td>
+									<td class="text-left"><a th:href="@{/product-detail/pid={id}(id=${item.id})}" th:text="${item.name} + '( - '+ ${#numbers.formatInteger(item.discount*100,1,'POINT')}+'% )'">Xiao Yi</a></td>
+									<td class="text-left"><div class="input-group btn-block" style="min-width: 100px;">
+										<input type="text" id="qty-update" name="quantity" th:value="${item.quantity}" size="1" class="form-control">
+										<span class="input-group-btn">
+										<button type="submit" th:attr="data-id=${item.id}" data-toggle="tooltip" title="Update" class="btn btn-primary btn-update-cart-item"><i class="fa fa-refresh"></i></button>
+										<button type="button" th:attr="data-id=${item.id}" data-toggle="tooltip" title="Remove" class="btn btn-danger btn-cart-item-remove" onClick=""><i class="fa fa-times-circle"></i></button>
+										</span></div></td>
+									<td class="text-right" th:text="${#numbers.formatInteger(item.unitPrice,3,'POINT')}"></td>
+									<td class="text-right" th:text="${#numbers.formatInteger(item.unitPrice*(1-item.discount),3,'POINT')}" ></td>
+									<td class="text-right" th:text="${#numbers.formatInteger(item.unitPrice*(1-item.discount),3,'POINT')}" ></td>
+
+								  </tr>
+								</tbody>
+								<tfoot>
+								  <tr>
+									<td class="text-right" colspan="5"><strong>Sub-Total:</strong></td>
+									<td class="text-right" th:text="${#numbers.formatInteger(cartAmount,3,'POINT')}">$93.73</td>
+								  </tr>
+								  <tr>
+									<td class="text-right" colspan="5"><strong>Flat Shipping Rate:</strong></td>
+									<td class="text-right">0</td>
+								  </tr>
+								  <tr>
+									<td class="text-right" colspan="5"><strong>Total:</strong></td>
+									<td class="text-right" th:text="${#numbers.formatInteger(cartAmount,3,'POINT')}">$121.85</td>
+								  </tr>
+								</tfoot>
+							  </table>
+							  <label class="control-label" for="confirm_agree">
+								<input type="checkbox" checked="checked" value="1" required="" class="validate required" id="confirm_agree" name="confirm agree">
+								<span>I have read and agree to the <a class="agree" href="#"><b>Terms &amp; Conditions</b></a></span> </label>
+							  <div class="buttons">
+								<div class="pull-right">
+									<input type="submit" class="btn btn-primary" id="button-confirm" value="Confirm Order">
+								</div>
+							  </div>
+							</div>
+						  </div>  
+					  </div>
+					</div>
+				  </div>
+				</div>
+				</form>
+			  </div>
+			</div>
+			<!--Middle Part End -->
+			
+		</div>
+	</div>
+	<!-- //Main Container -->
+
+   <!-- Footer Container -->
+   <footer th:replace="index :: yee_footer" class="footer-container typefooter-1"></footer>
+   <!-- //end Footer Container -->
+<!-- End Color Scheme
+============================================ -->
+
+
+
+<!-- Include Libs & Plugins
+============================================ -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+<script type="text/javascript" th:src="@{/js/slick-slider/slick.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/modernizr/modernizr-2.6.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/minicolors/jquery.miniColors.min.js}"></script>
+
+<!-- Theme files
+============================================ -->
+
+<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/themejs/homepage.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/themejs/toppanel.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script> 
+
+</body>
+</html>

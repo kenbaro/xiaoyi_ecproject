@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="index::yee_head"></head>
+
+<body class="res layout-1 layout-subpage">
+    
+    <div id="wrapper" class="wrapper-fluid banners-effect-5">
+    
+
+    <!-- Header Container  -->
+    <header th:replace="index::yee_header" id="header" class=" typeheader-1">
+        
+
+    </header>
+    <!-- //Header Container  -->
+
+    
+	<!-- Main Container  -->
+	<div class="main-container container">
+		<ul class="breadcrumb">
+			<li><a href="#"><i class="fa fa-home"></i></a></li>
+			<li><a href="#">Account</a></li>
+			<li><a href="#">Login</a></li>
+		</ul>
+		
+		<div class="row">
+			<div id="content" class="col-sm-12">
+				<div class="page-login">
+				
+					<div class="account-border">
+						<div class="row">
+							<div class="col-sm-6 new-customer">
+								<div class="well">
+									<h2><i class="fa fa-file-o" aria-hidden="true"></i> New Customer</h2>
+									<p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
+								</div>
+								<div class="bottom-form">
+									<a th:href="@{/register}" class="btn btn-default pull-right">Continue</a>
+								</div>
+							</div>
+							
+							<form th:action="@{/login}" method="post" enctype="multipart/form-data">
+								<div class="col-sm-6 customer-login">
+									<div class="well">
+										<h2><i class="fa fa-file-text-o" aria-hidden="true"></i> Returning Customer</h2>
+										<p><strong>I am a returning customer</strong></p>
+										<div class="form-group">
+											<label class="control-label " for="input-email">UserName</label>
+											<input type="text" name="id" th:value="${uid}" id="input-email" class="form-control" />
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label " for="input-password">Password</label>
+											<input  type="password" name="pw" th:value="${pwd}" id="input-password" class="form-control" />
+										</div>
+										<div class="form-group">
+											<input name="rm" type="checkbox" /> <label>Remember Password?</label>
+										</div>
+										<div th:if="${message!=null}" class="alert alert-danger" role="alert">
+											<p th:text="${message}"></p>
+										</div>
+									</div>
+									<div class="bottom-form">
+										<a href="#" class="forgot">Forgotten Password</a>
+										<input type="submit" value="Login" class="btn btn-default pull-right" />
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //Main Container -->
+	
+
+	<!-- Footer Container -->
+    <footer th:replace="index::yee_footer" class="footer-container typefooter-1"></footer>
+    <!-- //end Footer Container -->
+
+    </div>
+	
+<!-- Include Libs & Plugins
+	============================================ -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/owl-carousel/owl.carousel.js"></script>
+<script type="text/javascript" src="js/slick-slider/slick.js"></script>
+	<script type="text/javascript" src="js/themejs/libs.js"></script>
+	<script type="text/javascript" src="js/unveil/jquery.unveil.js"></script>
+	<script type="text/javascript" src="js/countdown/jquery.countdown.min.js"></script>
+	<script type="text/javascript" src="js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
+	<script type="text/javascript" src="js/datetimepicker/moment.js"></script>
+	<script type="text/javascript" src="js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui/jquery-ui.min.js"></script>
+	
+	
+	<!-- Theme files
+	============================================ -->
+	
+	
+	<script type="text/javascript" src="js/themejs/so_megamenu.js"></script>
+	<script type="text/javascript" src="js/themejs/addtocart.js"></script>
+	<script type="text/javascript" src="js/themejs/application.js"></script>
+	
+	
+	
+</body>
+</html>

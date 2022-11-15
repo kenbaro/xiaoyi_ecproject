@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: yee_head"></head>
+
+<body class="common-home res layout-1">
+    
+    <div id="wrapper" class="wrapper-fluid banners-effect-3">
+    
+
+    <!-- Header Container  -->
+    <header th:replace="/layout/header :: yee_header1"  id="header" class=" typeheader-1">
+        
+  
+    </header>
+    <!-- //Header Container  -->
+    
+	<!-- Main Container  -->
+	<div class="main-container container">
+		<ul class="breadcrumb">
+			<li><a href="#"><i class="fa fa-home"></i></a></li>
+			<li><a href="#">Order Infomation</a></li>
+		</ul>
+		
+		<div class="row">
+			<!--Middle Part Start-->
+			<div id="content" class="col-sm-9">
+				<h2 class="title">Order Information</h2>
+
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<td colspan="2" class="text-left">Order Details</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="width: 50%;" class="text-left"> <b>Order ID:</b> <th:block th:text="'#' + ${order.id}"></th:block>
+								<br>
+								<b>Date Added:</b> <th:block th:text="${order.orderDate}"></th:block></td>
+							<td style="width: 50%;" class="text-left"> <b>Phone:</b> <th:block th:text="${order.telephone}"></th:block>
+								<br>
+								<b>Note:</b> <th:block th:utext="${order.description}"></th:block></td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<td style="width: 50%; vertical-align: top;" class="text-left">Payment Address</td>
+							<td style="width: 50%; vertical-align: top;" class="text-left">Shipping Address</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="text-left" th:text="${order.address}">
+							<td class="text-left" th:text="${order.address}">
+						</tr>
+					</tbody>
+				</table>
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<td class="text-left">Product ID</td>
+								<td class="text-left">Image</td>
+								<td class="text-left">Product Name</td>
+								<td class="text-right">UnitPrice</td>
+								<td class="text-right">Discount</td>
+								<td class="text-right">Quantity</td>
+								<td class="text-right">Total</td>
+								<td style="width: 20px;"></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="oDetail,state:${orderDetails}">
+								<td class="text-left" th:text="${oDetail.product.id}">iPhone5 </td>
+								<td class="text-left"><a th:href="@{/product-detail/pid={id}(id=${oDetail.product.id})}"><img width="60px" th:src="@{${'/image/catalog/products/'+oDetail.product.image}}" alt="Xitefun" title="Xitefun" class="img-thumbnail"></a> </td>
+								<td class="text-left" th:text="${oDetail.product.name}">product 11</td>
+								<td class="text-right" th:text="${#numbers.formatInteger(oDetail.unitprice,3,'POINT')}+' VNĐ'"></td>
+								<td class="text-right" th:text="${#numbers.formatInteger(oDetail.discount*100,1,'POINT')}+' %'"></td>
+								<td class="text-right" th:text="${oDetail.quantity}">$123.20</td>
+								<td class="text-right" th:text="${#numbers.formatInteger(oDetail.quantity * oDetail.unitprice*(1-oDetail.discount),3,'POINT') + ' VNĐ'}"></td>
+								<td style="white-space: nowrap;" class="text-right"> <a class="btn btn-primary" title="" data-toggle="tooltip" href="#" data-original-title="Reorder"><i class="fa fa-shopping-cart"></i></a>
+									<a class="btn btn-danger" title="" data-toggle="tooltip" href="#" data-original-title="Return"><i class="fa fa-reply"></i></a>
+								</td>
+							</tr>
+
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="5"></td>
+								<td class="text-right"><b>Sub-Total</b>
+								</td>
+								<td class="text-right" th:text="${#numbers.formatInteger(order.amount,3,'POINT')} + ' VNĐ'">$101.00</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td colspan="5"></td>
+								<td class="text-right"><b>Flat Shipping Rate</b>
+								</td>
+								<td class="text-right">0 VNĐ</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td colspan="5"></td>
+								<td class="text-right"><b>Total</b>
+								</td>
+								<td class="text-right" th:text="${#numbers.formatInteger(order.amount,3,'POINT')} + ' VNĐ'">$133.20</td>
+								<td></td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+				<h3>Order History</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<td class="text-left">Date Added</td>
+							<td class="text-left">Status</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="text-left" th:text="${order.orderDate}"></td>
+							<td th:if="${order.status==1}" class="text-left">Preparing</td>
+							<td th:if="${order.status==2}" class="text-left">Shipping</td>
+							<td th:if="${order.status==3}" class="text-left">Shipped</td>
+							<td th:if="${order.status==4}" class="text-left">Cancel</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="buttons clearfix">
+					<div class="pull-right"><a class="btn btn-primary" href="#">Continue</a>
+					</div>
+				</div>
+
+
+
+			</div>
+			<!--Middle Part End-->
+			<!--Right Part Start -->
+			<aside class="col-sm-3 hidden-xs content-aside col-md-3" id="column-right">
+				<h2 class="subtitle">Account</h2>
+<div class="list-group">
+	<ul class="list-item">
+		<li><a href="#">Login</a>
+		</li>
+		<li><a href="#">Register</a>
+		</li>
+		<li><a href="#">Forgotten Password</a>
+		</li>
+		<li><a href="#">My Account</a>
+		</li>
+		<li><a href="#">Address Books</a>
+		</li>
+		<li><a href="wishlist.html">Wish List</a>
+		</li>
+		<li><a href="#">Order History</a>
+		</li>
+		<li><a href="#">Downloads</a>
+		</li>
+		<li><a href="#">Reward Points</a>
+		</li>
+		<li><a href="#">Returns</a>
+		</li>
+		<li><a href="#">Transactions</a>
+		</li>
+		<li><a href="#">Newsletter</a>
+		</li>
+		<li><a href="#">Recurring payments</a>
+		</li>
+	</ul>
+</div>			</aside>
+			<!--Right Part End -->
+		</div>
+	</div>
+	<!-- //Main Container -->
+
+   <!-- Footer Container -->
+   <footer th:replace="index :: yee_footer" class="footer-container typefooter-1"></footer>
+   <!-- //end Footer Container -->
+<!-- End Color Scheme
+============================================ -->
+
+
+
+<!-- Include Libs & Plugins
+============================================ -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+<script type="text/javascript" th:src="@{/js/slick-slider/slick.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/modernizr/modernizr-2.6.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/minicolors/jquery.miniColors.min.js}"></script>
+
+<!-- Theme files
+============================================ -->
+
+<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/themejs/homepage.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/themejs/toppanel.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script> 
+
+</body>
+</html>

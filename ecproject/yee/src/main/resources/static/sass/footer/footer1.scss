@@ -1,0 +1,333 @@
+
+//** simple and lightweight mixin library for Sass **
+//-- url : http://bourbon.io/docs ---
+@import 'bourbon/bourbon';
+
+//** Mixins for Rem Font Sizing **
+//-- url : http://hugogiraudel.com/2013/03/18/ultimate-rem-mixin/
+@import 'utilities/rem';
+
+//** Variables for responsive design in bootstrap with sass **
+//-- url : https://gist.github.com/webinfinita/11407836
+@import 'utilities/bootstrap_breakpoints';
+
+//** Makes supporting both left-to-right (LTR) and right-to-left (RTL) easy.**
+//-- url : https://github.com/tysonmatanich/directional-scss
+@import 'utilities/directional';
+
+//Mixins utilities
+@import 'utilities/theme_variables';
+@import 'utilities/utilities';
+
+/* ================================================================================ */
+
+/*.footer-container{
+	margin-top: 40px;
+}*/
+.common-home{
+	.typefooter-1{
+		margin-top: 80px;
+	}
+}
+// For ie
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.common-home footer.typefooter-1{
+		margin-top: 30px;
+	}
+ 	footer.typefooter-1{
+		margin-top: 0px;
+		.footer-top{
+			margin-top: 0;
+		}
+	}
+}
+.typefooter-1{
+	margin-top: 50px;
+	background-color: #f5f5f5; position: relative;
+	/* GENERAL */
+	.module .modtitle{
+       	color: #222;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 25px;  
+        font-weight: 600;
+        text-transform: uppercase;   
+        position: relative;
+        padding-bottom: 6px;
+        &:after{
+        	position: absolute;
+        	content: "";
+        	width: 70px;
+        	height: 2px;
+        	#{$left}: 0;
+        	bottom: 0;
+        }        
+	}
+	.box-footer{	
+		margin-top: 10px;	
+		.modcontent{
+			ul{
+				li{		        
+		          a{
+		            border: 0 none;		            
+		           
+		            padding: 0;		    
+		            font-weight: 400; 
+		            line-height: 30px;  
+		            position: relative;
+		            padding-#{$left}: 20px;
+		            display: inline-block;
+		            &:before{
+		            	font-family: 'FontAwesome';
+		            	content: "\f192";
+		            	font-size: 8px;
+		            	position: absolute;
+		            	top: 0px;
+		            	#{$left}: 0;
+		            }
+		          }		    
+		        }
+			}
+		}
+	}
+
+	.container{
+		overflow: unset;
+	}
+	.footer-top{
+		border-radius: 5px;
+		padding: 30px 15px;
+		margin-top: -50px;
+	}
+	.footer-middle{
+		padding-top: 55px;
+		padding-bottom: 30px;
+	}
+		.newsletter-footer1{
+	    .newsletter{
+
+	      .title-block{  
+	      	width: 40%;
+	      	float: $left;   
+	        .page-heading{           
+	          font-size: 18px;
+	          line-height: 42px;    
+	          font-weight: 600;
+	          text-transform: uppercase;   
+	          color: #fff;
+	        }
+	        .promotext{
+	          font-size: 14px;
+	          color: #fff;
+	          display: none;
+	        }
+	      }
+	      .block_content{
+	       	width: 60%;
+	       	@media (min-width: 1200px) and (max-width: 1649px){
+		       	padding-#{$left}: 20px;
+		    }
+	      	float: $left;
+	        form.signup{
+	          display: block;
+	          margin: 0;
+	          .form-group{
+	            position: relative;
+	            .input-box{
+	              background-color: #fff;  
+	              vertical-align: top;
+	              padding-#{$right}: 120px;
+	              border-radius: 5px;
+	            }
+	            .subcribe{
+	              position: absolute;
+	              top: 0;
+	              #{$right}: 0;
+	            }
+
+	            input.form-control{
+	              height: 42px;
+	              line-height: 42px; font-size: 12px;
+	              width: 100%;
+	              box-shadow: none;
+	              padding: side-values(0 0 0 20px);
+	              border: none;           
+	              background-color: #fff;    
+	              &::-moz-placeholder {
+	                      color: #666;
+	                        opacity: 1; 
+	                    }
+	                    &:-ms-input-placeholder { color: #666; } 
+	                    &::-webkit-input-placeholder  { color: #666; } 
+	                      &:focus{
+	                          z-index: 0;
+	                      }
+	            }
+	          }
+
+	          .subcribe button{  
+	            background-color: #222;         
+	            border: 0 none;
+	            color: #fff;
+	            font-weight: 600;
+	            font-size: 14px;
+	            height: 42px;
+	            line-height: 42px;
+	            padding: 0 17px;    
+	            text-transform: uppercase;
+	            border-bottom-#{$right}-radius: 5px;
+	            border-top-#{$right}-radius: 5px;
+	            &:hover{
+	              color: $linkColor;
+	            }
+	          }
+	        }
+	      }
+	    }
+	}
+
+	.socials-w{
+		h2{
+			font-size: 18px;
+			text-transform: uppercase;
+			font-weight: 600;
+			color: #fff;
+			float: $left;
+			margin-#{$right}: 20px;
+			line-height: 42px;
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+	}
+	.socials{
+		float: $left;
+		li{
+			position: relative;
+			float: $left;
+			margin: 0 5px;
+		
+			a{
+				color: #fff;
+			    font-size: 18px;
+			    width: 42px; height: 42px;
+			    line-height: 42px;
+			    text-align: center;
+			    background-color: rgba(0,0,0,0.2);
+			    border-radius: 3px;
+				display: block;
+			    span{
+			    	display: none;
+			    }
+			    &:hover{
+			    	background-color: #fff;
+			    }
+			}
+			
+		}
+	}
+
+	.infos-footer{
+		ul{
+			margin-top: 20px;
+			li{
+				background: url(#{$imgPath}icon/icon-contact.png) no-repeat $left top;  
+			    
+			    line-height: 25px;
+			    list-style: outside none none;
+			    padding: side-values(10px 0px 10px 40px);
+			    text-transform: capitalize;
+			    a{
+				    color: #666;
+				    
+				    transition: all 0.3s ease 0s;
+			    }
+			    &.adres {
+				    background-position: $left 14px; padding-top: 0;
+				}
+				&.phone {
+				    background-position: $left -55px;
+				}
+				&.mail {
+				    background-position: $left -100px;
+				}
+				&.time {
+				    background-position: $left -144px;
+				}
+			}
+		}
+	}
+
+	
+	.footer-b{
+		border-top: 1px solid #ddd;
+		text-align: center;
+		margin: 0;
+	}
+	.bottom-cont{
+		width: 56%;
+		margin: 0 auto; text-align: center;
+		padding-top: 40px; padding-bottom: 22px;
+	}
+	.footer-links{ margin-top: 30px; margin-bottom: 15px;
+	    li{
+	    	display: inline-block;
+		    margin-bottom: 10px;
+		    padding: 0 12px;
+		    line-height: 100%;
+		    a{
+		    	color: #333; font-weight: 600; text-transform: uppercase;
+		    }		   
+	    }
+	}
+
+
+	/* FOOTER BOTTOM */
+	.copyright-w{
+		background-color: #222;
+		margin-top: 35px;
+		padding: 20px 0;
+	}
+	.payment-w{
+
+	}
+	.footer-bottom{
+		text-align: center;
+	   	color: #fff;
+
+	    .copyright{
+
+	    }
+
+	 
+
+	}
+}
+
+
+@media (min-width: 1200px) and (max-width: 1649px){
+	.typefooter-1{
+		.col-infos{
+			padding-#{$left}: 0;
+		}
+		.infos-footer ul li{
+			padding: side-values(5px 0px 5px 40px);
+		}
+		.infos-footer ul li{
+			&.adres {
+			    background-position: $left 22px; padding-top: 0;
+			}
+			&.phone {
+			    background-position: $left -46px;
+			}
+			&.mail {
+			    background-position: $left -103px;
+			}
+			&.time {
+			    background-position: $left -147px;
+			}
+		}
+		.bottom-cont{
+			width: 70%;
+		}
+	} 
+}

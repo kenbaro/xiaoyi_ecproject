@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+th:fragment="main-fragment (title, otherStaticResources, header, nav, mainContent, footer)" >
+<head th:replace="index :: yee_head"></head>
+<body class="res layout-subpage layout-1 banners-effect-5">
+    <div id="wrapper" class="wrapper-fluid banners-effect-3">
+        <header th:replace="index :: yee_header"></header>
+        	<!-- Main Container  -->
+	<div class="main-container container">
+		<ul class="breadcrumb">
+			<li><a href="#"><i class="fa fa-home"></i></a></li>
+			<li><a href="#">Xiao Yi</a></li>
+			<li><a href="#">Product Detail</a></li>
+			
+		</ul>
+		
+		<div class="row">
+	
+			<!--Left Part Start -->
+			<aside class="col-sm-4 col-md-3 content-aside" id="column-left">
+				<div class="module category-style">
+                	<h3 class="modtitle">Categories</h3>
+                	<div class="modcontent">
+                		<div class="box-category">
+                			<ul id="cat_accordion" class="list-group">
+                				<li th:each="cate,state:${cates}" class=""><a  th:href="@{/product-list-by-cate/cid={id}(id=${cate.id})}" class="cutom-parent" th:text="${cate.nameVN}">Health &amp; Beauty</a>  <span class="dcjq-icon"></span></li>
+                			</ul>
+                		</div>
+                		
+                		
+                	</div>
+                </div>
+            	<div class="module product-simple">
+                    <h3 class="modtitle">
+                        <span>Latest products</span>
+                    </h3>
+                    <div class="modcontent">
+                        <div class="so-extraslider" >
+                            <!-- Begin extraslider-inner -->
+                            <div class=" extraslider-inner">
+                                <div class="item ">
+                                    <div th:each="pItem,state:${lastestProducts}" th:if="${state.count>4}" class="product-layout item-inner style1 ">
+                                        <div class="item-image">
+                                            <div class="item-img-info">
+                                                <a th:href="@{/product-detail/pid={id}(id=${pItem.id})}" target="_self" title="Mandouille short ">
+                                                    <img th:src="@{${'/image/catalog/products/' + pItem.image}}" alt="Mandouille short">
+                                                    </a>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="item-info">
+                                            <div class="item-title">
+                                                <a th:href="@{/product-detail/pid={id}(id=${pItem.id})}" target="_self" title="" th:text="${pItem.name}"> </a>
+                                            </div>
+                                            <div class="rating">
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                            </div>
+                                            <div th:if="${pItem.discount>0}" class="content_price price">
+                                                <span  class="price-new product-price" th:text="${#numbers.formatInteger(pItem.unitPrice*(1-pItem.discount),3,'POINT')}"></span>&nbsp;&nbsp;
+                                                <!-- <span style="font-size: 10px;" th:text="@{${'('+pItem.discount+'% )'}}"></span> -->
+                                                <span style="font-size: 10px;" th:text="@{${'(-'+#numbers.formatDecimal(pItem.discount*100,1,0) +'%)'}}"></span>
+
+                                                
+                                                <span class="price-old" th:text="${#numbers.formatInteger(pItem.unitPrice,3,'POINT')}"> </span>&nbsp;
+                                            </div>
+                                            <div th:unless="${pItem.discount>0}" class="content_price price">
+                                                <span  class="price-new product-price" th:text="${#numbers.formatInteger(pItem.unitPrice,3,'POINT')} "> </span>&nbsp;&nbsp;
+                                                <!-- <span class="price-old" th:text="${pItem.unitPrice}"> </span>&nbsp; -->
+                                            </div>
+                                        </div>
+                                        <!-- End item-info -->
+                                        <!-- End item-wrap-inner -->
+                                    </div>
+                                    <!-- End item-wrap -->
+
+
+                                </div>
+                            </div>
+                            <!--End extraslider-inner -->
+                        </div>
+                    </div>
+                </div>
+                <div class="module banner-left hidden-xs ">
+                	<div class="banner-sidebar banners">
+                      <div>
+                        <a title="Banner Image" href="#"> 
+                          <img th:src="@{/image/catalog/banners/bndoc1.jpg}" alt="Banner Image"> 
+                        </a>
+                      </div>
+                    </div>
+                </div>
+            </aside>
+            <!--Left Part End -->
+
+			<!--Middle Part Start-->
+			<div id="content" class="col-md-9 col-sm-8">
+				
+				<div class="product-view row">
+					<div class="left-content-product">
+				
+						<div class="content-product-left class-honizol col-md-5 col-sm-12 col-xs-12">
+							<div class="large-image  ">
+								<img itemprop="image" class="product-image-zoom" th:src="@{${'/image/catalog/products/'+product.image}}"  title="Chicken swinesha" alt="Chicken swinesha">
+							</div>
+							<a class="thumb-video pull-left" href="https://www.youtube.com/watch?v=tALWqmy4WHU"><i class="fa fa-youtube-play"></i></a>
+							
+							<div id="thumb-slider" class="yt-content-slider full_slider owl-drag" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column00="4" data-items_column0="4" data-items_column1="3" data-items_column2="4"  data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
+								<a data-index="0" class="img thumbnail " data-image="image/catalog/demo/product/fashion/1.jpg" title="Chicken swinesha">
+									<img th:src="@{${'/image/catalog/products/'+product.image}}" title="Chicken swinesha" alt="Chicken swinesha">
+								</a>
+								<a data-index="1" class="img thumbnail " data-image="image/catalog/demo/product/fashion/2.jpg" title="Chicken swinesha">
+									<img th:src="@{${'/image/catalog/products/'+product.image}}" title="Chicken swinesha" alt="Chicken swinesha">
+								</a>
+								<a data-index="2" class="img thumbnail " data-image="image/catalog/demo/product/fashion/3.jpg" title="Chicken swinesha">
+									<img th:src="@{${'/image/catalog/products/'+product.image}}" title="Chicken swinesha" alt="Chicken swinesha">
+								</a>
+								<a data-index="3" class="img thumbnail " data-image="image/catalog/demo/product/fashion/4.jpg" title="Chicken swinesha">
+									<img th:src="@{${'/image/catalog/products/'+product.image}}" title="Chicken swinesha" alt="Chicken swinesha">
+								</a>
+								<a data-index="4" class="img thumbnail " data-image="image/catalog/demo/product/fashion/5.jpg" title="Chicken swinesha">
+									<img th:src="@{${'/image/catalog/products/'+product.image}}" title="Chicken swinesha" alt="Chicken swinesha">
+								</a>
+							</div>
+							
+						</div>
+
+						<div class="content-product-right col-md-7 col-sm-12 col-xs-12">
+							<div class="title-product">
+								<h1 th:text="${product.name}">XiaoYi</h1>
+							</div>
+							<!-- Review ---->
+							<div class="box-review form-group">
+								<div class="ratings">
+									<div class="rating-box">
+										<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+										<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+										<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+										<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+										<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+									</div>
+								</div>
+
+								<a class="reviews_button" href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0 reviews</a>	| 
+								<a class="write_review_button" href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>
+							</div>
+
+							<div class="product-label form-group">
+								<div th:if="${product.discount>0}" class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
+									<span class="price-new" itemprop="price" th:text="${#numbers.formatInteger(product.unitPrice*(1-product.discount),3,'POINT')}">$114.00</span>
+									<span class="price-old" th:text="${#numbers.formatInteger(product.unitPrice,3,'POINT')}">$122.00</span>
+								</div>
+								<div th:unless="${product.discount>0}" class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
+									<span class="price-new" itemprop="price" th:text="${#numbers.formatInteger(product.unitPrice,3,'POINT')}">$114.00</span>
+									<!-- <span class="price-old">$122.00</span> -->
+								</div>
+								<div class="stock"><span>Availability:</span> <span class="status-stock">In Stock</span></div>
+							</div>
+
+							<div class="product-box-desc">
+								<div class="inner-box-desc">
+									<!-- <div class="price-tax"><span>Ex Tax:</span> $60.00</div> -->
+									<div class="reward"><span>Price in reward points:</span> 400</div>
+									<div class="brand"><span>Brand:</span><a href="#" th:text=" Iphone">Apple</a>		</div>
+									<div class="model" ><span>Product Code:</span> <a href="" th:text="${'Product '+product.id}"></a> </div>
+									<div class="reward"><span>Reward Points:</span> 100</div>
+								</div>
+							</div>
+
+
+							<div id="product">
+								<div class="form-group box-info-product">
+									<div class="option quantity">
+										<div class="input-group quantity-control" unselectable="on" style="-webkit-user-select: none;">
+											<label>Quantity</label>
+											<input id="qty-input" class="form-control" type="text" name="quantity"
+											value="1">
+											<input type="hidden" name="product_id" value="50">
+											<span class="input-group-addon product_quantity_down">−</span>
+											<span class="input-group-addon product_quantity_up">+</span>
+										</div>
+									</div>
+									<div class="cart">
+										<input type="button" th:attr="data-id=${product.id}" data-toggle="tooltip" title="" value="Add to Cart" data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg btn-add-to-cart2"  onclick="cart.add('1', '1');" data-original-title="Add to Cart">
+									</div>
+									<div class="add-to-links wish_comp">
+										<ul class="blank list-inline">
+											<li class="wishlist">
+												<a class="icon btn-add-to-wishlist" data-toggle="tooltip" th:attr="data-id=${product.id}"
+												onclick="wishlist.add('50');" data-original-title="Add to Wish List"><i class="fa fa-heart"></i>
+												</a>
+											</li>
+										</ul>
+									</div>
+
+								</div>
+
+							</div>
+							<!-- end box info product -->
+
+						</div>
+				
+					</div>
+				</div>
+				<!-- Product Tabs -->
+				<div class="producttab ">
+					<div class="tabsslider  vertical-tabs col-xs-12">
+						<ul class="nav nav-tabs col-lg-2 col-sm-3">
+							<li class="active"><a data-toggle="tab" href="#tab-1">Description</a></li>
+							<li class="item_nonactive"><a data-toggle="tab" href="#tab-review">Reviews (1)</a></li>
+							<li class="item_nonactive"><a data-toggle="tab" href="#tab-4">Tags</a></li>
+							<li class="item_nonactive"><a data-toggle="tab" href="#tab-5">Custom Tab</a></li>
+						</ul>
+						<div class="tab-content col-lg-10 col-sm-9 col-xs-12">
+							<div id="tab-1" class="tab-pane fade active in">
+								 <p th:utext="${product.description}">
+									
+									</p>
+							
+								
+							</div>
+							<div id="tab-review" class="tab-pane fade">
+								<form>
+									<div id="review">
+										<table class="table table-striped table-bordered">
+											<tbody>
+												<tr>
+													<td style="width: 50%;"><strong>Thái Duy Bảo - XiaoYi</strong></td>
+													<td class="text-right">10/10/2022</td>
+												</tr>
+												<tr>
+													<td colspan="2">
+														<p>Dead !! No Hope !!! Don't use my bypass. It's dead !!</p>
+														<div class="ratings">
+															<div class="rating-box">
+																<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+																<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+																<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+																<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+																<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+															</div>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="text-right"></div>
+									</div>
+									<h2 id="review-title">Write a review</h2>
+									<div class="contacts-form">
+										<div class="form-group"> <span class="icon icon-user"></span>
+											<input type="text" name="name" class="form-control" value="Your Name" onblur="if (this.value == '') {this.value = 'Your Name';}" onfocus="if(this.value == 'Your Name') {this.value = '';}"> 
+										</div>
+										<div class="form-group"> <span class="icon icon-bubbles-2"></span>
+											<textarea class="form-control" name="text" onblur="if (this.value == '') {this.value = 'Your Review';}" onfocus="if(this.value == 'Your Review') {this.value = '';}">Your Review</textarea>
+										</div> 
+										<span style="font-size: 11px;"><span class="text-danger">Note:</span>						HTML is not translated!</span>
+										
+										<div class="form-group">
+										 <b>Rating</b> <span>Bad</span>&nbsp;
+										<input type="radio" name="rating" value="1"> &nbsp;
+										<input type="radio" name="rating"
+										value="2"> &nbsp;
+										<input type="radio" name="rating"
+										value="3"> &nbsp;
+										<input type="radio" name="rating"
+										value="4"> &nbsp;
+										<input type="radio" name="rating"
+										value="5"> &nbsp;<span>Good</span>
+										
+										</div>
+										<div class="buttons clearfix"><a id="button-review" class="btn buttonGray">Continue</a></div>
+									</div>
+								</form>
+							</div>
+							<div id="tab-4" class="tab-pane fade">
+								<a href="#">Smart Phone</a>,
+								<a href="#">Apple</a>				
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Product Tabs -->
+
+				<!-- Related Products -->
+    			<div class="related titleLine products-list grid module ">
+    				<h3 class="modtitle">Similar Products  </h3>
+    		
+    				<div class="releate-products yt-content-slider products-list" data-rtl="no" data-loop="yes" data-autoplay="no" data-autoheight="no" data-autowidth="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column00="5" data-items_column0="5" data-items_column1="3" data-items_column2="3" data-items_column3="2" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-hoverpause="yes">
+    					<div th:each="prod,state:${similarProd}" class="item">         
+                            <div class="item-inner product-layout transition product-grid">
+                                <div class="product-item-container">
+                                    <div class="left-block left-b">
+                                        
+                                        <div class="product-image-container second_img">
+                                            <a th:href="@{/product-detail/pid={id}(id=${prod.id})}" target="_self" title="Lastrami bacon">
+                                                <img th:src="@{${'/image/catalog/products/'+prod.image}}" class="img-1 img-responsive" alt="image1">
+                                                <img th:src="@{/image/catalog/demo/product/270/e2.jpg}" class="img-2 img-responsive" alt="image2">
+                                            </a>
+                                        </div>
+                                        <!--quickview--> 
+                                        <div class="so-quickview">
+                                          <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
+                                        </div>                                                     
+                                        <!--end quickview-->
+
+                                        
+                                    </div>
+                                    <div class="right-block">
+                                        <div class="button-group so-quickview cartinfo--left">
+                                            <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
+                                                <span>Add to cart </span>   
+                                            </button>
+                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>Add to Wish List</span>
+                                            </button>
+                                            <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-retweet"></i><span>Compare this Product</span>
+                                            </button>
+                                            
+                                        </div>
+                                        <div class="caption hide-cont">
+                                            <div class="ratings">
+                                                <div class="rating-box">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                </div>
+                                                <span class="rating-num">( 2 )</span>
+                                            </div>
+                                            <h4><a th:href="@{/product-detail/pid={id}(id=${prod.id})}" title="YeeShop" th:text="${prod.name}" target="_self"></a></h4>
+                                            
+                                        </div>
+                                        <p class="price">
+                                          <span class="price-new" th:text="${#numbers.formatInteger(prod.unitPrice,3,'POINT')} + ' VNĐ'"></span>
+                                          
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>      
+                        </div>
+
+    				</div>
+    			</div>
+
+    			<!-- end Related  Products-->
+			</div>
+				
+				
+				
+			
+			
+				
+			</div>
+			
+			
+		</div>
+		<!--Middle Part End-->
+	</div>
+	<!-- //Main Container -->
+        <footer th:replace="index :: yee_footer"></footer>
+    </div>
+    
+
+    <!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+<script type="text/javascript" th:src="@{/js/slick-slider/slick.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/modernizr/modernizr-2.6.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/minicolors/jquery.miniColors.min.js}"></script>
+
+<!-- Theme files
+============================================ -->
+
+<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/themejs/homepage.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/themejs/toppanel.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>  
+</body>
+</html>

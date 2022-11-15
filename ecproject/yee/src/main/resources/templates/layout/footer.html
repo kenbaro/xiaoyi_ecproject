@@ -1,0 +1,219 @@
+    <!-- Footer Container -->
+    <footer th:fragment="yee_footer" class="footer-container typefooter-1">
+        <!-- Footer Top Container -->
+ 
+        <div class="container">
+            <div class="row footer-top">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="socials-w">
+                      <h2>Follow socials</h2>
+                      <ul class="socials">
+                        <li class="facebook"><a href="https://www.facebook.com/nptkeii" target="_blank"><i class="fab fa-facebook"></i><span>Facebook</span></a></li>
+                        <li class="twitter"><a href="https://discord.com/users/883981966293205003" target="_blank"><i class="fab fa-discord"></i><span>Discord</span></a></li>
+                        <li class="google_plus"><a href="#" target="_blank"><i class="fab fa-google-plus"></i><span>Google Plus</span></a></li>
+                        <li class="pinterest"><a href="#" target="_blank"><i class="fab fa-pinterest"></i><span>Pinterest</span></a></li>
+                        <!-- <li class="youtube"><a href="#" target="_blank"><i class="fa-bars fa-youtube-play"></i><span>Youtube</span></a></li> -->
+                        <li class="linkedin"><a href="#" target="_blank"><i class="fab fa-linkedin"></i><span>linkedin</span></a></li>
+                        <li class="skype"><a href="#" target="_blank"><i class="fab fa-skype"></i><span>skype</span></a></li>
+                      </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="module newsletter-footer1">
+                        <div class="newsletter">
+
+                            <div class="title-block">
+                                <div class="page-heading font-title">
+                                    Signup for Newsletter
+                                </div>
+                                
+                            </div>
+
+                            <div class="block_content">
+                                <form method="post" id="signup" name="signup" class="form-group form-inline signup send-mail">
+                                    <div class="form-group">
+                                        <div class="input-box">
+                                            <input type="email" placeholder="Your email address..." value="" class="form-control" id="txtemail" name="txtemail" size="55">
+                                        </div>
+                                        <div class="subcribe">
+                                            <button class="btn btn-primary btn-default font-title" type="submit" onclick="return subscribe_newsletter();" name="submit">
+                                        Subscribe
+                                    </button>
+                                        </div>
+                                    </div>
+                                </form>
+
+
+                            </div>
+                            <!--/.modcontent-->
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </div>
+  
+    <!-- /Footer Top Container -->
+    
+    <div class="footer-middle ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-infos">
+                    <div class="infos-footer">
+                        <a href="#"><img th:src="@{/image/catalog/logomix.png}" alt="image"></a>
+                        <ul class="menu">
+                            <li class="adres">
+                                HCMUTE - 01, Vo Van Ngan, Thu Duc City, Ho Chi Minh City 
+                            </li>
+                            <li class="phone">
+                                +84 999 999 999
+                            </li>
+                            <li class="mail">
+                                <a href="mailto:nhom10@laptrinhweb.com">yeebypass@thaiduybao.com</a>
+                            </li>
+                            <li class="time">
+                                Open time: 24/7
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-style">
+                    <div class="box-information box-footer">
+                        <div class="module clearfix">
+                            <h3 class="modtitle">Information</h3>
+                            <div class="modcontent">
+                                <ul class="menu">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="#">Warranty And Services</a></li>
+                                    <li><a href="#">Support 24/7 page</a></li>
+                                    <li><a href="#">Product Registration</a></li>
+                                    <li><a href="#">Product Support</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-style">
+                    <div class="box-account box-footer">
+                        <div class="module clearfix">
+                            <h3 class="modtitle">Community</h3>
+                            <div class="modcontent">
+                                <ul class="menu">
+                                    <li><a href="#">Rewards program</a></li>
+                                    <li><a href="#">Forum</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Specials</a></li>
+                                    <li><a href="#">FAQs</a></li>
+                                    <li><a href="#">Social Network</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-clear">
+                    <div class="box-service box-footer">
+                      <div class="module clearfix">
+                        <h3 class="modtitle">Support</h3>
+                        <div class="modcontent">
+                          <ul class="menu">
+                            <li><a href="#">Contact Center</a></li>
+                            <li><a href="#">Insurance</a></li>
+                            <li><a href="#">Address of center</a></li>
+                            <li><a href="#">Technical Support</a></li>
+                            <li><a href="#">Customer Service</a></li>
+                            <li><a href="#">Service Center</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-style">
+                    <div class="box-service box-footer">
+                        <div class="module clearfix">
+                            <h3 class="modtitle">Services</h3>
+                            <div class="modcontent">
+                                <ul class="menu">
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Support</a></li>
+                                    <li><a href="#">Site Map</a></li>
+                                    <li><a href="#">Customer Service</a></li>
+                                    <li><a href="#">Custom Link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-style">
+                    <div class="box-service box-footer">
+                      <div class="module clearfix">
+                        <h3 class="modtitle">Brands</h3>
+                        <div class="modcontent">
+                          <ul class="menu">
+                            <li><a href="#">Apple</a></li>
+                            <li><a href="#">SamSung</a></li>
+                            <li><a href="#">Oppo</a></li>
+                            <li><a href="#">Redmi</a></li>
+                            <li><a href="#">Huawei</a></li>
+                            <li><a href="#">Vsmart</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+                    <div class="footer-b">
+                        <div class="bottom-cont">
+                            <a href="#"><img th:src="@{/image/catalog/demo/payment/pay1.jpg}" alt="image"></a>
+                            <ul class="footer-links">
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Customer Service</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Delivery Policy</a></li>
+                                <li><a href="#">Orders and Returns</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>  
+                            <p>YEE SHOP focuses on building different customer service with outstanding 
+                                quality, in line with the customer-centered culture in all thoughts and 
+                                actions of the company.
+                                
+                                With the main business of mobile phones, YEE SHOP cooperates with
+                                many big brands like Apple, Samsung, Oppo, etc. </p>
+                        </div>
+                    </div>
+        </div>
+    </div>
+    <!-- Footer Bottom Container -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="col-lg-12 col-xs-12 payment-w">
+            <img th:src="@{/image/catalog/demo/payment/payment.png}" alt="imgpayment">
+            </div>
+        </div>
+        <div class="copyright-w">
+            <div class="container">
+                <div class="copyright">
+                Layout is customed by <a href="https://www.facebook.com/nptkeii" target="_blank">XiaoYi-Thái Duy Bảo</a>
+                </div>
+            </div>
+        </div>            
+    </div>
+    <!-- /Footer Bottom Container -->
+    
+    
+        <!--Back To Top-->
+    <div class="back-to-top"><i class="fa fa-angle-up"></i></div>
+    </footer>
+    <!-- //end Footer Container -->

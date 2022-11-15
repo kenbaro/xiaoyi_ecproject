@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: yee_head"></head>
+
+<body class="common-home res layout-1">
+    
+    <div id="wrapper" class="wrapper-fluid banners-effect-3">
+    
+
+    <!-- Header Container  -->
+    <header th:replace="/layout/header :: yee_header1"  id="header" class=" typeheader-1">
+        
+  
+    </header>
+    <!-- //Header Container  -->
+    
+   
+	<!-- Main Container  -->
+	<div class="main-container container">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/home}"><i class="fa fa-home"></i></a></li>
+			<li><a href="#">Page</a></li>
+			<li><a href="#">About Us</a></li>
+		</ul>
+		
+		<div class="row">
+			<div id="content" class="col-sm-12">
+				<div class="about-us about-demo-4">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 about-us-content">
+							<div class="content-about">
+								<h2 class="about-title">About Us</h2> <img th:src="@{/image/catalog/banners/about-us.jpg}" alt="About Us">
+								<p class="description-about" style="text-align:justify;">
+									YEE SHOP focuses on building different customer service with outstanding 
+									quality, in line with the customer-centered culture in all thoughts and 
+									actions of the company.
+
+									With the main business of mobile phones, YEE SHOP cooperates with
+									many big brands like Apple, Samsung, Oppo, etc.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 faq-about-us">
+							<h2 class="about-title">Faqs</h2>
+							<div class="content-faq">
+								<div id="accordion" role="tablist" aria-multiselectable="true">
+									<div class="panel">
+										<div class="panel-head" role="tab" id="headingOne">
+											<h4 class="panel-title">						<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">						  <span>How to purchase/order on YeeShop app?</span>						</a>					  </h4> </div>
+										<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
+											<div class="panel-body">  
+												Access the YeeShop website and follow the following steps:
+												<br>&nbsp;&nbsp;&nbsp;1. Using the search engine, type the name of the product you want to buy. 
+												<br>&nbsp;&nbsp;&nbsp;2. See YeeShop's phones
+												<br>&nbsp;&nbsp;&nbsp;3. Refer to "Flash Sale".
+												<br>&nbsp;&nbsp;&nbsp;4. Refer to "TrueMall". </div>
+										</div>
+									</div>
+									<div class="panel">
+										<div class="panel-head" role="tab" id="headingTwo">
+											<h4 class="panel-title">						<a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">						  <span>How long does it take to receive a refund after a successful return?</span>						</a>					  </h4> </div>
+										<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="true">
+											<div class="panel-body"> Depending on the date you return, YeeShop will refund you </div>
+										</div>
+									</div>
+									<div class="panel">
+										<div class="panel-head" role="tab" id="headingThree">
+											<h4 class="panel-title">						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">						  <span>How to get free/supported shipping fee?</span>						</a>					  </h4> </div>
+										<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false" style="height: 0px;">
+											<div class="panel-body"> 
+												YeeShop's shipping fee support policy will change from time to time. In order to receive shipping fee support, please ensure the following conditions: 
+												<br>&nbsp;&nbsp;&nbsp;1. Your order has a value equal to or higher than the minimum value to enjoy Free Shipping (the &nbsp;&nbsp;&nbsp;minimum value is specified instead of the minimum value). change from time to time).
+												<br>&nbsp;&nbsp;&nbsp;2. You still have the number of times to support the shipping fee in the day and in the month (the number &nbsp;&nbsp;&nbsp;of turns changes from time to time).
+												<br>Note:
+												<br>&nbsp;&nbsp;&nbsp;1.You can select the filter "Shipping fee support" after typing the name of the product you want to search &nbsp;&nbsp;&nbsp;for, so that the system displays the merchants included in the fee support program.
+												<br>&nbsp;&nbsp;&nbsp;2. The maximum supported shipping fee will change from time to time.
+												<br>&nbsp;&nbsp;&nbsp;3.Soldiers who ship the goods themselves are not included in the shipping fee support list.</div>
+										</div>
+									</div>
+									<div class="panel">
+										<div class="panel-head" role="tab" id="headingFour">
+											<h4 class="panel-title">						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">						  <span>I have completed the payment. When will I receive the goods?</span>						</a>					  </h4> </div>
+										<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour" aria-expanded="false" style="height: 0px;">
+											<div class="panel-body">If eligible, after the order is processed, it is completed on the system. No more than 3 days, the goods will be delivered to the customer. And depending on the geographical distance </div>
+										</div>
+									</div>
+									<div class="panel">
+										<div class="panel-head" role="tab" id="headingFive">
+											<h4 class="panel-title">						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">						  <span>Is payment at YeeShop safe? Does YeeShop store customer card information?</span>						</a>					  </h4> </div>
+										<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive" aria-expanded="false" style="height: 0px;">
+											<div class="panel-body"> You can be completely assured because when paying online at YeeShop, we implement a guaranteed payment policy. Accordingly, the payment will only be transferred to the seller after you confirm receipt of the goods. Guaranteed payment makes transactions faster, safer and easier.
+												Important features of secure payment:
+												<br>&nbsp;&nbsp;&nbsp;• Secure payment with VeriSign security system.
+												<br>&nbsp;&nbsp;&nbsp;• Track the delivery of goods.
+												<br>&nbsp;&nbsp;&nbsp;• Money is only transferred to the seller after you confirm receipt of the goods.
+												<br>Your credit card information will be kept securely by Sendo because we use secure Digital Certificates (SSL) technology to encrypt all personal data sent over the Internet from your electronic device. All personal information is protected by a firewall. </div>
+										</div>
+									</div>
+									<div class="panel">
+										<div class="panel-head" role="tab" id="headingSix">
+											<h4 class="panel-title">						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">						  <span>How can I cancel my order?</span>						</a>					  </h4> </div>
+										<div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix" aria-expanded="false" style="height: 0px;">
+											<div class="panel-body"> Step 1: Login to your YeeShop account.
+												<br>Step 2: In the top right corner of the screen, please tap your name. Then continue to click "Order information".
+												<br>Step 3: Select "Waiting for confirmation".
+												<br>Step 4: At the order you want to cancel, click the "Cancel" button, choose a reason and continue to press the cancel button. Note: Orders can only be canceled when the order has been placed within 8 hours! </div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- //Main Container -->
+   <!-- Footer Container -->
+   <footer th:replace="index :: yee_footer" class="footer-container typefooter-1"></footer>
+   <!-- //end Footer Container -->
+<!-- End Color Scheme
+============================================ -->
+
+
+
+<!-- Include Libs & Plugins
+============================================ -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+<script type="text/javascript" th:src="@{/js/slick-slider/slick.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/modernizr/modernizr-2.6.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/minicolors/jquery.miniColors.min.js}"></script>
+
+<!-- Theme files
+============================================ -->
+
+<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/themejs/homepage.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/themejs/toppanel.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script> 
+
+</body>
+</html>

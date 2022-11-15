@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+th:fragment="main-fragment (title, otherStaticResources, header, nav, mainContent, footer)" >
+<head th:replace="index :: yee_head"></head>
+<body class="res layout-subpage layout-1 banners-effect-5">
+    <div id="wrapper" class="wrapper-fluid banners-effect-3">
+        <header th:replace="index::yee_header"></header>
+	<!-- Main Container  -->
+	<div class="main-container container">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/home}" ><i class="fa fa-home"></i></a></li>
+			<li><a th:href="@{/home}">YEE SHOP</a></li>
+			<li th:if="${cid>0}"><a th:href="@{/product-list-by-cate/cid={cid}(cid=${CATE.id})}" th:text="${CATE.nameVN}"></a></li>
+			<li th:unless="${cid>0}"><a th:href="@{/product-list-by-cate/cid=0}" th:text="CATEGORY"></a></li>
+		</ul>
+		
+		<div class="row">
+			<!--Left Part Start -->
+			<aside class="col-sm-4 col-md-3 content-aside" id="column-left">
+				<div class="module category-style">
+                	<h3 class="modtitle">Categories</h3>
+                	<div class="modcontent">
+                		<div class="box-category">
+                			<ul id="cat_accordion" class="list-group">
+                				<li th:each="cate,state:${cates}" class=""><a th:href="@{/product-list-by-cate/cid={cid}(cid=${cate.id})}" class="cutom-parent" th:text="${cate.nameVN}"></a>  <span class="dcjq-icon"></span></li>
+                				
+                			</ul>
+                		</div>
+                		
+                		
+                	</div>
+                </div>
+            </aside>
+            <!--Left Part End -->
+			
+        	<!--Middle Part Start-->
+        	<div id="content" class="col-md-9 col-sm-8">
+        		<div class="products-category">
+                    <h3 class="title-category ">Your Favorite Products</h3>
+        			<div class="category-desc">
+        				<div class="row">
+        					<div class="col-sm-12">
+        						<div class="banners">
+        							<div>
+        								<a  href="#"><img style="border-radius: 4px;" th:src="@{/image/catalog/banners/bnlength.jpg}" alt="img cate"><br></a>
+        							</div>
+        						</div>
+        					
+        					</div>
+        				</div>
+        			</div>
+        			<!-- Filters -->
+                    <div class="product-filter product-filter-top filters-panel">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-3 col-xs-12 view-mode">
+                                
+                                    <div class="list-view">
+                                        <button class="btn btn-default grid " data-view="grid" data-toggle="tooltip"  data-original-title="Grid"><i class="fa fa-th"></i></button>
+                                        <!-- <button class="btn btn-default list active" data-view="list" data-toggle="tooltip" data-original-title="List"><i class="fa fa-th-list"></i></button> -->
+                                    </div>
+                        
+                            </div>
+                            <div class="short-by-show form-inline text-right col-md-7 col-sm-9 col-xs-12">
+                                <div class="form-group short-by">
+                                    <label class="control-label" for="input-sort">Sort By:</label>
+                                    <select id="input-sort" class="form-control"
+                                    onchange="location = this.value;">
+                                        <option value="" selected="selected">Default</option>
+                                        <option value="">Name (A - Z)</option>
+                                        <option value="">Name (Z - A)</option>
+                                        <option value="">Price (Low &gt; High)</option>
+                                        <option value="">Price (High &gt; Low)</option>
+                                        <option value="">Rating (Highest)</option>
+                                        <option value="">Rating (Lowest)</option>
+                                        <option value="">Model (A - Z)</option>
+                                        <option value="">Model (Z - A)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="input-limit">Show:</label>
+                                    <select id="input-limit" class="form-control" th:onchange="'location = this.value;'">
+                                        <option value="" selected="selected">10</option>
+                                        <option value="">25</option>
+                                        <option value="">50</option>
+                                        <option value="">75</option>
+                                        <option value="">100</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //end Filters -->
+                    <div style="margin-bottom: 10px;" class="products-list row nopadding-xs so-filter-gird">
+            	
+        				<div th:each="prod,state:${favo}" class="product-layout col-lg-15 col-md-4 col-sm-6 col-xs-12">
+                            <div class="product-item-container">
+                                <div class="left-block left-b">
+                                    
+                                    <div class="product-image-container second_img">
+                                        <a th:href="@{/product-detail/pid={id}(id=${prod.id})}" target="_self" title="Lastrami bacon">
+                                            <img th:src="@{${'/image/catalog/products/'+prod.image}}" class="img-1 img-responsive" alt="image1">
+                                            <img th:src="@{/image/catalog/demo/product/270/e10.jpg}" class="img-2 img-responsive" alt="image2">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div style="text-align: center;" class="right-block">
+                                 
+                                    <div class="caption hide-cont">
+                                        <div class="ratings">
+                                            <div class="rating-box">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                            </div>
+                                            <span class="rating-num">( 2 )</span>
+                                        </div>
+                                        <h4 style="min-height: 34px;"><a style="font-size: 12px;"  th:href="@{/product-detail/pid={id}(id=${prod.id})}" title="Pastrami bacon" target="_self" th:text="${prod.name}">Lastrami bacon</a></h4>
+                                        
+                                    </div>
+                                    <div th:if="${prod.discount>0}" class="content_price price">
+                                        <span class="price-new product-price" style="font-size: 12px;" th:text="${#numbers.formatInteger(prod.unitPrice*(1-prod.discount),3,'POINT')}"> </span>&nbsp;&nbsp;
+
+                                        <span class="price-old" style="font-size: 10px;" th:text="${#numbers.formatInteger(prod.unitPrice,3,'POINT')}"> </span>&nbsp;
+
+                                    </div>
+                                    <div th:unless="${prod.discount>0}" class="content_price price">
+                                        <span class="price-new product-price" style="font-size:12px;" th:text="${#numbers.formatInteger(prod.unitPrice,3,'POINT')}"> </span>&nbsp;&nbsp;
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+ 
+
+
+                    </div>
+
+        			<!--changed listings-->
+                   
+        			<!--// End Changed listings-->
+        			<!-- Filters -->
+        			<div class="product-filter product-filter-bottom filters-panel">
+                        <div class="row">
+                            <div class="col-sm-6 text-left"></div>
+                            <div class="col-sm-6 text-right">Showing 1 to 15 of 15 (1 Pages)</div>
+                        </div>
+                    </div>
+        			<!-- //end Filters -->
+        			
+        		</div>
+        		
+        	</div>
+        	
+
+        	<!--Middle Part End-->
+        </div>
+    </div>
+	<!-- //Main Container -->
+        <footer th:replace="index :: yee_footer"></footer>
+    </div>
+    
+
+    <!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+<script type="text/javascript" th:src="@{/js/slick-slider/slick.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/modernizr/modernizr-2.6.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/minicolors/jquery.miniColors.min.js}"></script>
+
+<!-- Theme files
+============================================ -->
+
+<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/themejs/homepage.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/themejs/toppanel.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>  
+</body>
+</html>

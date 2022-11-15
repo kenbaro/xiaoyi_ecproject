@@ -1,0 +1,620 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head th:fragment="yee_head">
+    <!-- Basic page needs
+    ============================================ -->
+    <title>Yee-Shop</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="html5 template, best html5 template, best html template, html5 basic template, multipurpose html5 template, multipurpose html template, creative html templates, creative html5 templates" />
+    <meta name="description" content="SuperMarket is a powerful Multi-purpose HTML5 Template with clean and user friendly design. It is definite a great starter for any eCommerce web project." />
+    <meta name="author" content="Magentech">
+    <meta name="robots" content="index, follow" />
+   
+    <!-- Mobile specific metas
+    ============================================ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Favicon
+    ============================================ -->
+    <link rel="shortcut icon" type="image/png" th:href="@{/ico/favicon-16x16.png}"/>
+  
+   
+    <!-- Libs CSS
+    ============================================ -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}">
+    <link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
+    <link th:href="@{/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/lib.css}" rel="stylesheet">
+    <link th:href="@{/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
+    <link th:href="@{/js/minicolors/miniColors.css}" rel="stylesheet">
+    
+    <!-- Theme CSS
+    ============================================ -->
+    <link th:href="@{/css/themecss/so_searchpro.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so_megamenu.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-listing-tabs.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-category-slider.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-newletter-popup.css}" rel="stylesheet">
+
+    <link th:href="@{/css/footer/footer1.css}" rel="stylesheet">
+    <link th:href="@{/css/header/header1.css}" rel="stylesheet">
+    <link id="color_scheme" th:href="@{/css/theme.css}" rel="stylesheet"> 
+    <link th:href="@{/css/responsive.css}" rel="stylesheet">
+
+     <!-- Google web fonts
+    ============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>     
+    <style type="text/css">
+         body{font-family:'Poppins', sans-serif;}
+    </style>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+</head>
+
+<body class="common-home res layout-1">
+    
+    <div id="wrapper" class="wrapper-fluid banners-effect-3">
+    
+
+    <!-- Header Container  -->
+    <header th:fragment="yee_header" id="header" class=" typeheader-1">
+        
+        <!-- Header Top -->
+        <div class="header-top hidden-compact">
+            <div class="container">
+                <div class="row">
+                    <div class="header-top-left col-lg-7 col-md-8 col-sm-6 col-xs-4">
+                        <div class="hidden-md hidden-sm hidden-xs welcome-msg">Welcome to Project EC  made by: <span>XiaoYi</span> </div>
+                        <ul class="top-link list-inline hidden-lg ">
+                            <li class="account" id="my_account">
+                                <a href="#" title="My Account " class="btn-xs dropdown-toggle" data-toggle="dropdown"> <span class="hidden-xs">My Account </span>  <span class="fa fa-caret-down"></span>
+                                </a>
+                                <ul th:if="${session.user==null}" class="dropdown-menu ">
+                                    <li><a th:href="@{/register}"><i class="fa fa-user"></i> Register</a></li>
+                                    <li ><a th:href="@{/login}"><i class="fa fa-pencil-square-o"></i> LogiN</a></li>
+                                    
+
+                                </ul>
+                                <ul th:unless="${session.user==null}" class="dropdown-menu ">
+                                    <li><a th:href="@{/login}"><i class="fa fa-user"></i> Log Out</a></li>
+                                    <li ><a th:text="${session.user.fullname}" th:href="@{/login}"><i class="fa fa-pencil-square-o"></i></a></li>
+                                </ul>
+                            </li>
+                        </ul>            
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- //Header Top -->
+
+        <!-- Header center -->
+        <div class="header-middle">
+            <div class="container">
+                <div class="row">
+                    <!-- Logo -->
+                    <div class="navbar-logo col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                        <div class="logo"><a th:href="@{/home}"><img th:src="@{/image/catalog/logoresize_white.png}" title="Your Store" alt="Your Store" /></a></div>
+                    </div>
+                    <!-- //end Logo -->
+
+                    
+                    <!-- Search -->
+                    <div class="col-lg-7 col-md-6 col-sm-5">
+                        <div class="search-header-w">
+                            <div class="icon-search hidden-lg hidden-md hidden-sm"><i class="fa fa-search"></i></div>                                
+                              
+                            <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
+                                <div id="search0" class="search input-group form-group">
+                                    <div class="select_category filter_type  icon-select hidden-sm hidden-xs">
+                                        <select class="no-border" name="category_id" th:onchange="'location = this.value;'">
+                                            <option th:value="0">All Categories</option>
+                                            <th:block th:each="cate,state:${cates}">
+                                            <option th:value="@{/product-list-by-cate/cid={cid}(cid=${cate.id})}" th:text="${cate.nameVN}" ></option>
+                                            </th:block>
+                                        </select>
+                                    </div>
+                                    <form th:action="@{/product/list-by-keywords}" method="post">
+                                    <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Keyword here..." name="keywords">
+                            
+                                    <button type="submit" class="button-search btn btn-primary"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                                <!-- <input type="hidden" name="route" value="product/search" /> -->
+                        </div>
+                        </div>  
+                    </div>
+                    <!-- //end Search -->
+                    <div class="middle-right col-lg-3 col-md-3 col-sm-3">                  
+                        <!--cart-->
+                        <div th:replace="/cart/cart::yee_CartInner" class="shopping_cart">
+                        </div>
+                        <!--//cart-->
+
+                        <ul class="wishlist-comp hidden-md hidden-sm hidden-xs">
+                            <li class="compare hidden-xs"><a href="#" class="top-link-compare" title="Compare "><i class="fa fa-refresh"></i></a>
+                            </li>
+                            <li class="wishlist hidden-xs"><a th:href="@{/product/wishlist}" id="wishlist-total" class="top-link-wishlist" title="Wish List (0) "><i class="fa fa-heart"></i></a>
+                            </li>
+                        </ul>
+
+                                            
+                        
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+        <!-- //Header center -->
+
+        <!-- Header Bottom -->
+        <div class="header-bottom hidden-compact">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="bottom1 menu-vertical col-lg-2 col-md-3 col-sm-3">
+                        <div class="responsive so-megamenu megamenu-style-dev ">
+                            <div class="so-vertical-menu ">
+                                <nav class="navbar-default">    
+                                    
+                                    <div class="container-megamenu vertical">
+                                        <div id="menuHeading">
+                                            <div class="megamenuToogle-wrapper">
+                                                <div class="megamenuToogle-pattern">
+                                                    <div class="container">
+                                                        <div>
+                                                            <span></span>
+                                                            <span></span>
+                                                            <span></span>
+                                                        </div>
+                                                        All Categories                          
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                     
+                                        <div class="navbar-header">
+                                            <button type="button" id="show-verticalmenu" data-toggle="collapse" class="navbar-toggle">      
+                                                <i class="fa fa-bars"></i>
+                                                <span>  All Categories     </span>
+                                            </button>
+                                        </div>
+                                        <div class="vertical-wrapper" >
+                                            <span id="remove-verticalmenu" class="fa fa-times"></span>
+                                            <div class="megamenu-pattern">
+                                                <div class="container-mega">
+                                                    <ul class="megamenu">
+                                                        <th:block th:each="cate,state:${cates}">
+                                                            <li class="item-vertical">
+                                                                <p class="close-menu"></p>
+                                                                <a th:href="@{/product-list-by-cate/cid={cid}(cid=${cate.id})}" class="clearfix">
+                                                                    <img th:src="@{/image/catalog/menu/icons/4.png}" alt="icon">
+                                                                    <span th:text="${cate.nameVN}"></span>
+                                                                </a>
+                                                            </li>
+                                                        </th:block>
+                                                        
+
+                                                        <li class="item-vertical" style="display: none;">
+                                                            <p class="close-menu"></p>
+                                                            <a href="#" class="clearfix">
+                                                                 <img th:src="@{/image/catalog/menu/icons/ico11.png}" alt="icon">
+                                                                <span>Toys &amp; Hobbies </span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="item-vertical" style="display: none;">
+                                                            <p class="close-menu"></p>
+                                                            <a href="#" class="clearfix">
+                                                                 <img th:src="@{/image/catalog/menu/icons/ico12.png}" alt="icon">
+                                                                <span>Jewelry &amp; Watches</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="item-vertical" style="display: none;">
+                                                            <p class="close-menu"></p>
+                                                            <a href="#" class="clearfix">
+                                                                 <img th:src="@{/image/catalog/menu/icons/ico9.png}" alt="icon">
+                                                                <span>Home &amp; Lights</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="item-vertical" style="display: none;">
+                                                            <p class="close-menu"></p>
+                                                            <a href="#" class="clearfix">
+                                                                 <img th:src="@{/image/catalog/menu/icons/ico6.png}" alt="icon">
+                                                                <span>Metallurgy</span>
+                                                            </a>
+                                                        </li>
+                                                       
+                                                        <li class="loadmore">
+                                                            <i class="fa fa-plus-square-o"></i>
+                                                            <span class="more-view">More Categories</span>
+                                                        </li>
+                                                            
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </nav>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- Main menu -->
+                    <div class="main-menu-w col-lg-10 col-md-9">
+                        <div class="responsive so-megamenu megamenu-style-dev">
+                            <nav class="navbar-default">
+                                <div class=" container-megamenu  horizontal open ">
+                                    <div class="navbar-header">
+                                        <button type="button" id="show-megamenu" data-toggle="collapse" class="navbar-toggle">
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="megamenu-wrapper">
+                                        <span id="remove-megamenu" class="fa fa-times"></span>
+                                        <div class="megamenu-pattern">
+                                            <div class="container-mega">
+                                                <ul class="megamenu" data-transition="slide" data-animationtime="250">
+                                                    <li class="home hover">
+                                                        <a th:href="@{/home}">Home </a>
+                                                        
+                                                    </li>  
+                                                                                                 
+                                                    <li class="">
+                                                        <p class="close-menu"></p>
+                                                        <a th:href="@{/about}" class="clearfix">
+                                                            <strong>About Us</strong>
+                                         
+                                                        </a>
+                                            
+                                                    </li>
+                                                    <li class="">
+                                                        <p class="close-menu"></p>
+                                                        <a th:href="@{/contact}" class="clearfix">
+                                                            <strong>Contact</strong>
+                                                            <span class="label"></span>
+                                                        </a>
+                                                    </li>
+                                                    <!-- <li class="">
+                                                        <p class="close-menu"></p>
+                                                        <a href="#" class="clearfix">
+                                                            <strong>Site Map</strong>
+                                         
+                                                        </a>
+                                            
+                                                    </li>  -->
+                                                    <li th:if="${session.user != null}" class="with-sub-menu hover">
+                                                        <p class="close-menu"></p>
+                                                        <a href="#" class="clearfix">
+                                                            <strong>My Account</strong>
+                                                            <b class="caret"></b>
+                                                        </a>
+                                                        <div class="sub-menu" style="width: 30%; ">
+                                                            <div class="content" >
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <ul class="row-list">
+                                                                            <li><a class="subcategory_item" th:href="@{/user/change-password}">Change PassWord</a></li>
+                                                                            
+                                                                            <li><a class="subcategory_item" th:href="@{/user/change-info}">Your Profile</a></li>
+                                                                            <li><a class="subcategory_item" th:href="@{/order-history}">Order History</a></li>
+                                                                            <li><a class="subcategory_item" th:href="@{/user/order-items}">Ordered Products</a></li>
+
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                </ul>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- //end Main menu -->
+                                      
+                    <div class="bottom3">                        
+                        <div class="telephone hidden-xs hidden-sm hidden-md">
+                            <ul class="blank"> 
+                                <li><a href="#"><i class="fa fa-truck"></i>track your order</a></li> 
+                                <li><a href="#"><i class="fa fa-phone-square"></i>Hotline (+123)4 567 890</a></li> 
+                            </ul>
+                        </div>  
+                        <div class="signin-w hidden-md hidden-sm hidden-xs">
+                            <ul class="signin-link blank">
+                                <li th:unless="${session.user==null}" class="log login"><i class="fa fa-lock"></i> <a th:text="${session.user.fullname}" class="link-lg" > </a> | <a th:href="@{/logout}">LogOut</a></li>                                
+                                <li th:if="${session.user==null}" class="log login"><i class="fa fa-lock"></i> <a class="link-lg" th:href="@{/login}">Login </a> or <a th:href="@{/register}">Register</a></li>                                
+                            </ul>                       
+                        </div>                  
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <!-- //Header Container  -->
+r>
+   
+
+
+
+    <!-- Footer Container -->
+    <footer th:fragment="yee_footer" class="footer-container typefooter-1">
+        <!-- Footer Top Container -->
+ 
+        <div class="container">
+                <div class="row footer-top">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="socials-w">
+                          <h2>Follow socials</h2>
+                          <ul class="socials">
+                            <li class="facebook"><a href="https://www.facebook.com/nptkeii" target="_blank"><i class="fab fa-facebook"></i><span>Facebook</span></a></li>
+                            <li class="twitter"><a href="https://discord.com/users/883981966293205003" target="_blank"><i class="fab fa-discord"></i><span>Discord</span></a></li>
+                            <li class="google_plus"><a href="#" target="_blank"><i class="fab fa-google-plus"></i><span>Google Plus</span></a></li>
+                            <li class="pinterest"><a href="#" target="_blank"><i class="fab fa-pinterest"></i><span>Pinterest</span></a></li>
+                            <!-- <li class="youtube"><a href="#" target="_blank"><i class="fa-bars fa-youtube-play"></i><span>Youtube</span></a></li> -->
+                            <li class="linkedin"><a href="#" target="_blank"><i class="fab fa-linkedin"></i><span>linkedin</span></a></li>
+                            <li class="skype"><a href="#" target="_blank"><i class="fab fa-skype"></i><span>skype</span></a></li>
+                          </ul>
+                        </div>
+                        
+
+
+
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="module newsletter-footer1">
+                            <div class="newsletter">
+
+                                <div class="title-block">
+                                    <div class="page-heading font-title">
+                                        Signup for Newsletter
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="block_content">
+                                    <form method="post" id="signup" name="signup" class="form-group form-inline signup send-mail">
+                                        <div class="form-group">
+                                            <div class="input-box">
+                                                <input type="email" placeholder="Your email address..." value="" class="form-control" id="txtemail" name="txtemail" size="55">
+                                            </div>
+                                            <div class="subcribe">
+                                                <button class="btn btn-primary btn-default font-title" type="submit" onclick="return subscribe_newsletter();" name="submit">
+                                            Subscribe
+                                        </button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                                <!--/.modcontent-->
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+      
+        <!-- /Footer Top Container -->
+        
+        <div class="footer-middle ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-infos">
+                        <div class="infos-footer">
+                            <a href="#"><img th:src="@{/image/catalog/logomix.png}" alt="image"></a>
+                            <ul class="menu">
+                                <li class="adres">
+                                    HCMUTE - 01, Vo Van Ngan, Thu Duc City, Ho Chi Minh City 
+                                </li>
+                                <li class="phone">
+                                    +84 999 999 999
+                                </li>
+                                <li class="mail">
+                                    <a href="mailto:nhom10@laptrinhweb.com">yeebypass@thaiduybao.com</a>
+                                </li>
+                                <li class="time">
+                                    Open time: 24/7
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-style">
+                        <div class="box-information box-footer">
+                            <div class="module clearfix">
+                                <h3 class="modtitle">Information</h3>
+                                <div class="modcontent">
+                                    <ul class="menu">
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">FAQ</a></li>
+                                        <li><a href="#">Warranty And Services</a></li>
+                                        <li><a href="#">Support 24/7 page</a></li>
+                                        <li><a href="#">Product Registration</a></li>
+                                        <li><a href="#">Product Support</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-style">
+                        <div class="box-account box-footer">
+                            <div class="module clearfix">
+                                <h3 class="modtitle">Community</h3>
+                                <div class="modcontent">
+                                    <ul class="menu">
+                                        <li><a href="#">Rewards program</a></li>
+                                        <li><a href="#">Forum</a></li>
+                                        <li><a href="#">Blog</a></li>
+                                        <li><a href="#">Specials</a></li>
+                                        <li><a href="#">FAQs</a></li>
+                                        <li><a href="#">Social Network</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-clear">
+                        <div class="box-service box-footer">
+                          <div class="module clearfix">
+                            <h3 class="modtitle">Support</h3>
+                            <div class="modcontent">
+                              <ul class="menu">
+                                <li><a href="#">Contact Center</a></li>
+                                <li><a href="#">Insurance</a></li>
+                                <li><a href="#">Address of center</a></li>
+                                <li><a href="#">Technical Support</a></li>
+                                <li><a href="#">Customer Service</a></li>
+                                <li><a href="#">Service Center</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-style">
+                        <div class="box-service box-footer">
+                            <div class="module clearfix">
+                                <h3 class="modtitle">Services</h3>
+                                <div class="modcontent">
+                                    <ul class="menu">
+                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">Returns</a></li>
+                                        <li><a href="#">Support</a></li>
+                                        <li><a href="#">Site Map</a></li>
+                                        <li><a href="#">Customer Service</a></li>
+                                        <li><a href="#">Custom Link</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-style">
+                        <div class="box-service box-footer">
+                          <div class="module clearfix">
+                            <h3 class="modtitle">Brands</h3>
+                            <div class="modcontent">
+                              <ul class="menu">
+                                <li><a href="#">Apple</a></li>
+                                <li><a href="#">SamSung</a></li>
+                                <li><a href="#">Oppo</a></li>
+                                <li><a href="#">Redmi</a></li>
+                                <li><a href="#">Huawei</a></li>
+                                <li><a href="#">Vsmart</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                        <div class="footer-b">
+                            <div class="bottom-cont">
+                                <a href="#"><img th:src="@{/image/catalog/demo/payment/pay1.jpg}" alt="image"></a>
+                                <ul class="footer-links">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Customer Service</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Delivery Policy</a></li>
+                                    <li><a href="#">Orders and Returns</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                </ul>  
+                                <p>YEE SHOP focuses on building different customer service with outstanding 
+                                    quality, in line with the customer-centered culture in all thoughts and 
+                                    actions of the company.
+                                    
+                                    With the main business of mobile phones, YEE SHOP cooperates with
+                                    many big brands like Apple, Samsung, Oppo, etc. </p>
+                            </div>
+                        </div>
+            </div>
+        </div>
+        <!-- Footer Bottom Container -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="col-lg-12 col-xs-12 payment-w">
+                <img th:src="@{/image/catalog/demo/payment/payment.png}" alt="imgpayment">
+                </div>
+            </div>
+            <div class="copyright-w">
+                <div class="container">
+                    <div class="copyright">
+                    Layout is customed by <a href="https://www.facebook.com/nptkeii" target="_blank">XiaoYi-Thái Duy Bảo</a>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <!-- /Footer Bottom Container -->
+        
+        
+            <!--Back To Top-->
+        <div class="back-to-top"><i class="fa fa-angle-up"></i></div>
+    </footer>
+    <!-- //end Footer Container -->
+
+    </div>
+   
+
+<!-- End Color Scheme
+============================================ -->
+
+
+
+<!-- Include Libs & Plugins
+============================================ -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+<script type="text/javascript" th:src="@{/js/slick-slider/slick.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/libs.js"}></script>
+<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/modernizr/modernizr-2.6.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/minicolors/jquery.miniColors.min.js}"></script>
+
+<!-- Theme files
+============================================ -->
+
+<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/themejs/homepage.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/themejs/toppanel.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>  
+
+
+
+
+</body>
+</html>

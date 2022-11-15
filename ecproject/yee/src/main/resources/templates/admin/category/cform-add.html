@@ -1,0 +1,82 @@
+			<!-- BEGIN PAGE CONTENT-->
+			<div th:fragment="cate-add" class="row">
+				<div class="col-md-12">
+					<div class="tabbable tabbable-custom boxless tabbable-reversed">
+						<div class="tab-content">
+							<div class="tab-pane active" id="tab_0">
+								<div class="portlet box green">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="fa fa-pencil-square-o"></i>Category Add Form
+										</div>
+										<div class="tools">
+											<a href="javascript:;" class="collapse">
+											</a>
+											<a href="#portlet-config" data-toggle="modal" class="config">
+											</a>
+											<a href="javascript:;" class="reload">
+											</a>
+											<a href="javascript:;" class="remove">
+											</a>
+										</div>
+									</div>
+									<div class="portlet-body form">
+										<!-- BEGIN FORM-->
+										<form th:action="@{/admin/category/add}" th:object="${category}" class="form-horizontal" method="post" enctype="multipart/form-data">
+											<div class="form-body">
+                                                <div class="form-group last">
+													<label class="col-md-3 control-label">Admin</label>
+													<div class="col-md-4">
+														<span class="form-control-static" th:text="${session.user.fullname}">
+														 </span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">Category ID</label>
+													<div class="col-md-4">
+														<input name="id" type="number" class="form-control input-circle" placeholder="You don't need to fill" readonly>
+														<!-- <span class="help-block">
+														A block of help text. </span> -->
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">Category Name</label>
+													<div class="col-md-4">
+														<div class="input-group">
+															<span class="input-group-addon input-circle-left">
+															<i class="fa fa-pencil-square-o"></i>
+															</span>
+															<input name="name" type="text" class="form-control input-circle-right" placeholder="example:Xiao Yi">
+														</div>
+													</div>
+												</div>
+                                                <div class="form-group">
+													<label class="col-md-3 control-label">Brand</label>
+													<div class="col-md-4">
+														<div class="input-group">
+															<span class="input-group-addon input-circle-left">
+															<i class="fa fa-pencil-square-o"></i>
+															</span>
+															<input name="nameVN" type="text" class="form-control input-circle-right" placeholder="example:Xiao Yi">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-actions">
+												<div class="row">
+													<div class="col-md-offset-3 col-md-9">
+														<button type="submit" class="btn btn-circle blue">Add</button>
+														<button type="button" class="btn btn-circle default">Cancel</button>
+													</div>
+												</div>
+											</div>
+										</form>
+										<!-- END FORM-->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
